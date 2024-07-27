@@ -1,5 +1,5 @@
 {
-  "name": "react-tailwind-css-starter-pack",
+  "name": "todo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -41,5 +41,9 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.7"
-  }
+  },
+  "description": "This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.",
+  "homepage": "https://github.com/thepranaygupta/react-tailwind-css-starter-pack#readme",
+  "main": "tailwind.config.js",
+  "license": "ISC"
 }

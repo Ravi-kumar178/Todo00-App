@@ -13,7 +13,7 @@ const CreateTodo = () => {
     const toastId = toast.loading("Please wait...",{position:'top-center'})
    // console.log(data);
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/createTodo', data);
+      const response = await axios.post('https://todo00-app.onrender.com/api/v1/createTodo', data);
       console.log(response);
       toast.dismiss(toastId);
       toast.success(response.data.message,{ position: 'top-center'});

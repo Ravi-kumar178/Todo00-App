@@ -13,7 +13,7 @@ const Home = () => {
   //get All todo
   async function getAllTodo(){
     try {
-      const response = await axios.get("http://localhost:4000/api/v1/getAllTodo");
+      const response = await axios.get("https://todo00-app.onrender.com/api/v1/getAllTodo");
       console.log(response);
       setData(response.data.data);
      // console.log(data);
@@ -29,7 +29,7 @@ const Home = () => {
  //delete the data
  async function deleteHandler(id){
    try {
-     await axios.delete(`http://localhost:4000/api/v1/deleteTodo/${id}`)
+     await axios.delete(`https://todo00-app.onrender.com/api/v1/deleteTodo/${id}`)
      setData((prevData)=>prevData.filter((data)=>data._id !== id))
      toast.success('Data deleted successfully');
    } 

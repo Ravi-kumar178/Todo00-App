@@ -15,7 +15,7 @@ const UpdateTodo = () => {
   //restoring the value of title and description
   async function getOneTodo(id){
     try {
-      const response = await axios.get(`http://localhost:4000/api/v1/getOneTodo/${id}`);
+      const response = await axios.get(`https://todo00-app.onrender.com/api/v1/getOneTodo/${id}`);
       console.log(response);
       setValue("title",response.data.data.title);
       setValue("description",response.data.data.description);
@@ -34,7 +34,7 @@ const UpdateTodo = () => {
   async function submitHandler(data,e){
      e.preventDefault();
      try {
-      const response = await axios.put(`http://localhost:4000/api/v1/updateTodo/${id}`,data);
+      const response = await axios.put(`https://todo00-app.onrender.com/api/v1/updateTodo/${id}`,data);
       console.log(response);
       navigate("/");
       toast.success(response.data.message);

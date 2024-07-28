@@ -22,7 +22,7 @@ app.listen(PORT , ()=>{
     console.log(`App is listened at ${PORT}`);
 })
 
-app.get((req,res)=>{
+app.get("/",(req,res)=>{
     res.status(200).json({
         success: true,
         message:"Your Server is up and running"

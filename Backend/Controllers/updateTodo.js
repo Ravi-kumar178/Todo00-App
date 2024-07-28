@@ -23,7 +23,7 @@ exports.updateTodo = async(req,res) => {
       })
     }
     catch (error) {
-        console.log("Error: ",err.message);
+        console.log("Error: ",error.message);
        return res.status(500).json({
             success:false,
             message:"Error in Updation"

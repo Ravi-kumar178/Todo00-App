@@ -3,12 +3,12 @@ const Todo = require("../Models/Todo");
 exports.getAllTodo = async(req,res)=>{
     try{
         const response = await Todo.find();
-        if(response.length == 0){
+       /*  if(response.length == 0){
             return  res.status(200).json({
                 success:true,
                 message:"Please Create the entry"
             })
-        }
+        } */
         return  res.status(200).json({
             success:true,
             message:"All data returned successfully",

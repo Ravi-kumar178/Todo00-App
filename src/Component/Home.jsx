@@ -4,6 +4,7 @@ import { FaPlus } from "react-icons/fa";
 import axios from 'axios';
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from 'react-icons/md';
+import toast from 'react-hot-toast';
 
 
 const Home = () => {
@@ -25,19 +26,18 @@ const Home = () => {
     getAllTodo();
   },[]);
 
-  //get one todo
-  async function getOneTodo(id){
-    try{
-      const response = await axios.get('http://localhost:4000/api/v1/:id',id);
-      console.log(response);
-    }
-    catch(error){
-      console.log("Error: ",error.message);
-    }
-  }
-  useEffect(()=>{
-    getOneTodo(id);
-  },id);
+ //delete the data
+ async function deleteHandler(id){
+   try {
+     await axios.delete(`http://localhost:4000/api/v1/deleteTodo/${id}`)
+     setData((prevData)=>prevData.filter((data)=>data._id !== id))
+     toast.success('Data deleted successfully');
+   } 
+   catch (error) {
+     toast.error('Error while data deletion');
+     console.log("Error: ",error.message);
+   }
+ }
 
   console.log(data);
   return (
@@ -67,22 +67,22 @@ const Home = () => {
                (<div className='flex flex-col gap-4'>
                   {
                     data.map((todos,index)=>(
-                      <div key={index} className={`flex ${index == data.length-1?(''):('border-b-2')} pb-4 text-richblack-25 flex-row  w-full justify-between items-center`}>
+                      <div key={index} className={`flex ${index === data.length-1?(''):('border-b-2')} pb-4 text-richblack-25 flex-row  w-full justify-between items-center`}>
                         <p className='font-semibold text-lg'>{index+1}</p>
                         <div className='flex flex-col justify-center items-center gap-1'>
                           <p className='text-lg'>{todos.title}</p>
                           <p>{todos.description}</p>
                         </div>
                         <div className=' text-xl flex flex-row items-center gap-3'>
-                          <button ><MdDelete/></button>
-                          <button><MdEdit/></button>
+                          <button onClick={()=>{deleteHandler(todos._id)}}><MdDelete/></button>
+                          <Link to={`/updateTodo/`+todos._id}><button><MdEdit/></button></Link>
                         </div>
                       </div>
                     ))
                   }
                </div>)
                :
-               (<div className='text-richblack-50 text-center'>No todos found</div>)
+               (<div className='text-richblack-50 text-center capitalize font-semibold text-2xl'>Please Create Your To do list</div>)
              }
            </div>
         </div>
